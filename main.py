@@ -18,6 +18,9 @@ def print_menu():
             for filename in current_directory.iterdir():
                 print(filename.name)
         
+        if user_input == "h" or user_input == "help":
+            help_menu()
+        
         if user_input == "rn" or user_input == "rename":
             change = input("file to rename, new file name: ")
             change = change.split(",")
@@ -38,7 +41,7 @@ def help_menu():
     commands = ["pwd - list current directory",
     "ls - list all files in current directory",
     "rn,rename - rename a file",
-    "rn -m, rename -m - rename multiple files"]
+    "rn -r, rename -r - rename multiple files"]
     for command in commands:
         menu += command + "\n"
     print(menu)
