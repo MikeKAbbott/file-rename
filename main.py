@@ -4,19 +4,19 @@ import re
 
 class Rename:
     def __init__(self):
-        pass
+        self.directory = self.get_current_directory()
+        self.files = [item for item in self.directory.iterdir()]
 
     def main_menu(self) -> None:
-        current_directory = self.get_current_directory()
         user_input = ""
         while user_input != "quit" and user_input != "q":
             user_input = self.get_user_input("Enter Command: ")
             
             if user_input == "pwd":
-                print(current_directory)
+                print(self.directory)
             
             if user_input == "ls":
-                for filename in current_directory.iterdir():
+                for filename in self.files:
                     print(filename.name)
             
             if user_input == "h" or user_input == "help":
@@ -57,7 +57,7 @@ class Rename:
 
     def rename_multi_files(self,regex:str, new_file_name:str) -> None:
         pattern = re.compile(regex)
-        for item in self.get_current_directory().iterdir():
+        for item in self.files:
             file_name = str(item.name)
             if pattern.search(file_name):
                 new_name = re.sub(pattern,new_file_name,file_name)
