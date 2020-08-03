@@ -3,9 +3,7 @@ import pathlib
 import re
 
 
-global current_directory 
-
-def print_menu():
+def print_menu() -> None:
     current_directory = get_current_directory()
     user_input = ""
     while user_input != "quit" and user_input != "q":
@@ -36,7 +34,7 @@ def print_menu():
             rename_multi_files(common_file_name,new_file_name)          
 
     
-def help_menu():
+def help_menu() -> None:
     menu = "HELP MENU: \n"
     commands = ["pwd - list current directory",
     "ls - list all files in current directory",
@@ -47,14 +45,14 @@ def help_menu():
     print(menu)
     
 
-def get_current_directory():
+def get_current_directory() -> object:
     current_path = pathlib.Path((pathlib.Path().absolute()))
     return current_path
 
-def get_user_input(text):
+def get_user_input(text:str) -> str:
     return input(text)
 
-def rename_multi_files(regex, new_file_name):
+def rename_multi_files(regex:str, new_file_name:str) -> None:
     pattern = re.compile(regex)
     for item in get_current_directory().iterdir():
         file_name = str(item.name)
@@ -65,9 +63,9 @@ def rename_multi_files(regex, new_file_name):
 
             
 
-def rename_file(name, newName):
-    os.rename(name,newName)
-    print("File {name} renamed to {newName}".format(name=name,newName=newName))
+def rename_file(current_name:str, new_file_name:str) -> None:
+    os.rename(current_name,new_file_name)
+    print("File {current_name} renamed to {new_file_name}".format(current_name=current_name,new_file_name=new_file_name))
 
 
 if __name__ == "__main__":
