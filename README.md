@@ -5,8 +5,8 @@ How to use:
   2. Give the script a command and have fun!
   
 Commands:
-  pwd - list current directory,
-  ls  - list all files in current directory
-  rn,rename - rename a file
-  rn -r,rename -r - rename multiple files
+  pwd   - list current directory,
+  ls    - list all files in current directory
+  rn    - rename a file
+  rn -r - rename multiple files
  

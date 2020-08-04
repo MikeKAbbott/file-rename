@@ -12,10 +12,8 @@ class Rename:
             "ls": self.list_files,
             "h": self.help_menu,
             "help": self.help_menu,
-            "rn":self.rename_file,
-            "rename":self.rename_file,
+            "rn": self.rename_file,
             "rn -r":self.rename_multi_files,
-            "rename -r":self.rename_multi_files
         }
 
     def main_menu(self) -> None:
@@ -28,19 +26,18 @@ class Rename:
                     print(self.commands[user_input])
                 else:
                     self.commands[user_input]()
-       
 
     def help_menu(self) -> None:
         menu = "HELP MENU: \n"
         commands = ["pwd - list current directory",
         "ls - list all files in current directory",
-        "rn,rename - rename a file",
-        "rn -r, rename -r - rename multiple files"]
+        "rn - rename a file",
+        "rn -r - rename multiple files"]
         for command in commands:
             menu += command + "\n"
         print(menu)
 
-    def list_files(self):
+    def list_files(self) -> None:
         for filename in self.files:
             print(filename.name)
 
@@ -62,7 +59,7 @@ class Rename:
             if pattern.search(file_name):
                 new_name = re.sub(pattern,new_file_name,file_name)
                 os.rename(item, new_name)
-                print("File {old_name} renamed to {new_name}".format(old_name = file_name, new_name = new_name))     
+                print("File {} renamed to {}".format(file_name, new_name))     
 
     def rename_file(self) -> None:
         file_change = self.get_user_input("file to rename, new file name: ")
@@ -70,7 +67,7 @@ class Rename:
         current_name = file_change[0]
         new_name = file_change[1]
         os.rename(current_name,new_name)
-        print("File {current_name} renamed to {new_name}".format(current_name=current_name,new_name=new_name))
+        print("File {} renamed to {}".format(current_name,new_name))
 
 
 if __name__ == "__main__":
